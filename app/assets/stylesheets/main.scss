@@ -1,0 +1,189 @@
+// Place all the styles related to the main controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+html, body{
+  height: 100%;
+}
+
+#navBar{
+  top: 0;
+  margin: 0;
+  width: 100%;
+  background-color: #282828;
+  height: 50px;
+  color: #efefef
+}
+
+#queryWrapper{
+  margin-left: 100px;
+  position: relative;
+}
+
+#query{
+  color: #efefef;
+  background-color: #282828;
+  font-size:18px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:300px;
+  border:none;
+  border-bottom:1px solid white;
+}
+
+#query:focus {
+  outline: none;
+}
+
+#searchLabel{
+  z-index: 2;
+  color: #efefef;
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all;
+}
+
+#query:focus ~ label, #query:valid ~ label{
+  top:0px;
+  font-size:10px;
+  color: white;
+}
+
+.bar{
+  position: relative;
+  display: block;
+  width: 315px;
+}
+
+.bar:before, .bar:after{
+  content:'';
+  height:2px;
+  width:0;
+  bottom:1px;
+  position:absolute;
+  background: white;
+  transition:0.2s ease all;
+}
+
+.bar:before{
+  left:50%;
+}
+
+.bar:after{
+  right:50%;
+}
+
+#query:focus ~ .bar:before, #query:focus ~ .bar:after{
+  width:50%;
+}
+
+#leftWrapper{
+  background-color: #282828;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100px;
+  z-index: 1;
+}
+
+#sourceSelectorWrapper{
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+}
+
+.sourceList{
+  width:100%;
+}
+
+.sourceSelector{
+  background-color: transparent;
+  border-color: transparent;
+  width: 100%;
+  font-size: 70px;
+  margin-top: 50px;
+}
+
+.sourceSelector:hover {
+  background-color: #525252;
+  cursor:pointer;
+}
+
+#allSelector{
+  color: #8DEEEE;
+}
+
+#spotifySelector{
+  color: green;
+}
+
+#soundcloudSelector{
+  font-size: 50px;
+  color: #FF6600;
+}
+
+#youtubeSelector{
+  color: #e52d27;
+}
+
+#rightWrapper{
+  margin-left: 100px;
+  height: 80%;
+}
+
+#spotifyResults{
+  height: 100%;
+  overflow: auto;
+}
+
+.selectedSpotifyRow {
+  color: #81b71a;
+  background-color: #efefef;
+}
+
+#frameWrapper{
+  z-index: 2;
+  width: 99%;
+  position: absolute;
+  bottom: 0;
+}
+
+#spotifyFrame{
+  width: 100%;
+}
+
+
+table {
+  margin-top: 20px;
+  border-collapse: collapse;
+  width: 80%;
+  font-size: 18px;
+}
+
+th {
+  text-align: left;
+}
+
+tr {
+  border: solid;
+  border-width: 1px 0;
+}
+
+tr:first-child {
+  border-top: none;
+}
+
+td {
+  width: 30%;
+  overflow: hidden;
+  height: 45px;
+  padding-right: 10px;
+}
+
+.duration{
+  text-align: right;
+}
