@@ -1,24 +1,82 @@
-<div id="navBar">
+<div id="navBar" class="allNav">
   <div id="queryWrapper">
-    <input type="text" id="query" required />
-    <span class="bar"></span>
-    <label id="searchLabel"><i class="fa fa-search"> Search</i></label>
+    <input type="text" id="query" class="allInput" required />
+    <span id="bar" class="allBar"></span>
+    <label id="searchLabel" class="allLabel"><i class="fa fa-search"></i> Search</label>
   </div>
 </div>
 
-<div id="leftWrapper">
+<div id="leftWrapper" class="allLeft">
   <ul id="sourceSelectorWrapper">
     <li class="sourceList"><button id="allSelector" class="sourceSelector"><abbr title="All Sources"><i class="fa fa-music"></i></abbr></button></li>
     <li class="sourceList"><button id="spotifySelector" class="sourceSelector"><abbr title="Spotify"><i class="fa fa-spotify"></i></button></li>
     <li class="sourceList"><button id="soundcloudSelector" class="sourceSelector"><abbr title="SoundCloud"><i class="fa fa-soundcloud"></i></button></li>
     <li class="sourceList"><button id="youtubeSelector" class="sourceSelector"><abbr title="YouTube"><i class="fa fa-youtube-square"></i></button></li>
+    <li class="sourceList"><button id="twitchSelector" class="sourceSelector"><abbr title="Twitch"><i class="fa fa-twitch"></i></button></li>
+    <li class="sourceList"><button id="githubSelector" class="sourceSelector"><abbr title="Github"><i class="fa fa-github"></i></button></li>
   </ul>
 </div>
 
-<div id="rightWrapper">
-    <div id="spotifyResults" class="row"></div>
+<div id="rightWrapper" class="allRight">
+  <div id="resultsLeft">
+    <div id="twitchResults" class="twitchScroll" style="display:none"></div>
+    <div id="twitchChat" class="twitchScroll" style="display:none">
+      <iframe id="chat" frameborder="0" scrolling="no" src="http://twitch.tv/tsm_doublelift/chat?popout=" height="100%" width="100%">
+      </iframe>
+    </div>
+    <div id="spotifyPlaylist" class="playlist spotifyScroll" style="display:none"></div>
+    <div id="soundcloudPlaylist" class="playlist soundcloudScroll" style="display:none"></div>
+    <div id="youtubePlaylist" class="playlist youtubeScroll" style="display:none"></div>
+  </div>
+  <div id="results" class="allScroll">
+    <table class="allTable" style="display:none"></table>
+    <table class="spotifyTable" style="display:none"></table>
+    <table class="soundcloudTable" style="display:none"></table>
+    <table class="youtubeTable" style="display:none"></table>
+    <div id="twitchView" style="display:none">
+      <div id="streamTitle">Testerino</div>
+      <div id="streamWrapper">
+        <object id="stream" type="application/x-shockwave-flash" height="100%" width="100%" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=tsm_doublelift" bgcolor="#000000">
+          <param name="allowFullScreen" value="true" />
+          <param name="allowScriptAccess" value="always" />
+          <param name="allowNetworking" value="all" />
+          <param name="scale" value="default">
+          <param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" />
+          <param name="flashvars" value="hostname=www.twitch.tv&channel=tsm_doublelift&auto_play=true&start_volume=25" />
+        </object>
+      </div>
+      <div id="changeWrapper">
+        <div id="liveStreamersButton" class="button">
+						<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+							<line class="top" x1="0" y1="0" x2="200" y2="0"/>
+							<line class="left" x1="0" y1="65" x2="0" y2="-110"/>
+							<line class="bottom" x1="200" y1="65" x2="-200" y2="65"/>
+							<line class="right" x1="200" y1="0" x2="200" y2="155"/>
+						</svg>
+						<h3>Show Live Streamers</h3>
+				</div>
+        <div id="chatButton" class="button">
+						<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+							<line class="top" x1="0" y1="0" x2="200" y2="0"/>
+							<line class="left" x1="0" y1="65" x2="0" y2="-110"/>
+							<line class="bottom" x1="200" y1="65" x2="-200" y2="65"/>
+							<line class="right" x1="200" y1="0" x2="200" y2="155"/>
+						</svg>
+						<h3>Show Chat Room</h3>
+				</div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div id="frameWrapper">
-  <iframe id="spotifyFrame" src="https://embed.spotify.com/?uri=spotify:track:4th1RQAelzqgY7wL53UGQt" height="80" frameborder="0" allowtransparency="true"></iframe>
+  <div id="spotifyFrameWrapper">
+    <iframe id='spotifyFrame' class="musicFrames" src='https://embed.spotify.com/?uri=asdf' height='80' frameborder='0' allowtransparency='true'></iframe>
+  </div>
+  <div id="soundcloudFrameWrapper">
+    <iframe id='soundcloudFrame' class="musicFrames" src='http://w.soundcloud.com/player/' height='80' frameborder='0' allowtransparency='true'></iframe>
+  </div>
+  <div id="youtubeFrameWrapper">
+    <iframe id='youtubeFrame' class="musicFrames" src='http://www.youtube.com/embed/' height='80' frameborder='0' allowtransparency='true'></iframe>
+  </div>
 </div>

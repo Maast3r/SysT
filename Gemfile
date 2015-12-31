@@ -31,7 +31,13 @@ gem 'concurrent-ruby'
 gem 'foundation-rails'
 gem 'font-awesome-rails'
 # gem 'rubocop'
+gem 'figaro'
+gem 'omniauth-spotify'
+gem 'omniauth-google-oauth2'
+gem 'rename'
+gem 'gon'
 
+gem 'certified'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -1,42 +1,225 @@
 // Place all the styles related to the main controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-html, body{
+html, body {
   height: 100%;
+  margin: 0;
+  font-family: 'PT Sans', sans-serif;
 }
 
-#navBar{
+.button {
+	width: 200px;
+	height: 65px;
+	position: relative;
+	background: rgba(255,255,255,1);
+	display: inline-block;
+	margin: 0 10px;
+	cursor: pointer;
+	color: #6441a5;
+	box-shadow: inset 0 0 0 3px #6441a5;
+  -ms-transition: background 0.2s 0.2s;
+  -moz-transition: background 0.2s 0.2s;
+	-webkit-transition: background 0.2s 0.2s;
+	transition: background 0.2s 0.2s;
+}
+
+.button:hover {
+	background: #ffffff;
+  -ms-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+	-webkit-transition-delay: 0s;
+	transition-delay: 0s;
+}
+
+.button h3 {
+	font-family: 'PT Sans', sans-serif;
+	margin: 0;
+  padding: 10px;
+	font-weight: normal;
+	width: 100%;
+  line-height: 40px;
+  padding-left: 8%;
+}
+
+.button h3 {
+  -ms-transition: color 0.4s 0.5s;
+  -moz-transition: color 0.4s 0.5s;
+	-webkit-transition: color 0.4s 0.5s;
+	transition: color 0.4s 0.5s;
+}
+
+.button:hover h3 {
+	color: #6441a5;
+  -ms-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+	-webkit-transition-delay: 0s;
+	transition-delay: 0s;
+  font-weight: 900;
+}
+
+.button svg {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.button svg line {
+	stroke-width: 3;
+	stroke: #eeeeee;
+	fill: none;
+  -ms-transition: all .8s ease-in-out;
+  -moz-transition: all .8s ease-in-out;
+	-webkit-transition: all .8s ease-in-out;
+	transition: all .8s ease-in-out;
+}
+
+.button:hover svg line {
+  -ms-transition-delay: 0.1s;
+  -moz-transition-delay: 0.1s;
+	-webkit-transition-delay: 0.1s;
+	transition-delay: 0.1s;
+}
+
+.button svg line.top,
+.button svg line.bottom {
+	stroke-dasharray: 490 400;
+}
+
+.button svg line.left,
+.button svg line.right {
+	stroke-dasharray: 490 400;
+}
+
+.button:hover svg line.top {
+  -ms-transform: translateX(-345px);
+  -moz-transform: translateX(-345px);
+	-webkit-transform: translateX(-345px);
+	transform: translateX(-345px);
+}
+
+.button:hover svg line.bottom {
+  -ms-transform: translateX(500px);
+  -moz-transform: translateX(500px);
+	-webkit-transform: translateX(500px);
+	transform: translateX(500px);
+}
+
+.button:hover svg line.left {
+  -ms-transform: translateY(345px);
+  -moz-transform: translateY(345px);
+	-webkit-transform: translateY(345px);
+	transform: translateY(345px);
+}
+
+.button:hover svg line.right {
+  -ms-transform: translateY(-345px);
+  -moz-transform: translateY(-345px);
+	-webkit-transform: translateY(-345px);
+	transform: translateY(-345px);
+}
+
+.allBody {
+  background-color: #e5e5e5;
+}
+
+.spotifyBody {
+  background-color: #191919;
+}
+
+.soundcloudBody {
+  background-color: #e5e5e5;
+}
+
+.youtubeBody {
+  background-color: white;
+}
+
+.twitchBody {
+  background-color: white;
+}
+
+#navBar {
   top: 0;
   margin: 0;
-  width: 100%;
-  background-color: #282828;
+  width: calc(100% - 100px);
   height: 50px;
-  color: #efefef
+  color: #efefef;
+  margin-left: 100px;
 }
 
-#queryWrapper{
-  margin-left: 100px;
+.allNav {
+  background-color: #282224;
+}
+
+.spotifyNav {
+  background-color: #282828;
+}
+
+.soundcloudNav {
+  background-color: rgb(51, 51, 51);
+}
+
+.youtubeNav {
+  background-color: rgb(197, 17, 9);
+}
+
+.twitchNav {
+  background-color: #6441a5;
+}
+
+#queryWrapper {
+  margin-left: 10%;
   position: relative;
 }
 
-#query{
-  color: #efefef;
-  background-color: #282828;
+#query {
   font-size:18px;
   padding:10px 10px 10px 5px;
   display:block;
   width:300px;
-  border:none;
+  font-family: 'PT Sans', sans-serif;
+}
+
+.allInput {
+  background-color: #282224;
+  color: #efefef;
+  border: none;
   border-bottom:1px solid white;
+}
+
+.spotifyInput {
+  background-color: #282828;
+  color: #efefef;
+  border: none;
+  border-bottom:1px solid white;
+}
+
+.soundcloudInput {
+  background-color: rgb(51, 51, 51);
+  color: #e5e5e5;
+  border: none;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.youtubeInput {
+  background-color: rgb(197, 17, 9);
+  color: #e5e5e5;
+  border: none;
+  border-bottom: 1px solid white;
+}
+
+.twitchInput {
+  background-color: #6441a5;
+  color: #e5e5e5;
+  border: none;
+  border-bottom: 1px solid white;
 }
 
 #query:focus {
   outline: none;
 }
 
-#searchLabel{
-  z-index: 2;
-  color: #efefef;
+#searchLabel {
   font-size:18px;
   font-weight:normal;
   position:absolute;
@@ -44,124 +227,336 @@ html, body{
   left:5px;
   top:10px;
   transition:0.2s ease all;
+  font-family: 'PT Sans', sans-serif;
 }
 
-#query:focus ~ label, #query:valid ~ label{
-  top:0px;
-  font-size:10px;
+.allLabel {
+  color: #efefef;
+}
+
+.spotifyLabel {
+  color: #efefef;
+}
+
+.soundcloudLabel {
+  color: #e5e5e5;
+}
+
+.youtubeLabel {
   color: white;
 }
 
-.bar{
+.twitchLabel {
+  color: white;
+}
+
+#query:focus ~ label, #query:valid ~ label {
+  top:-2px;
+  font-size:10px;
+}
+
+#bar {
   position: relative;
   display: block;
   width: 315px;
 }
 
-.bar:before, .bar:after{
+.allBar {
+  background: white;
+}
+
+.spotifyBar {
+  background: white;
+}
+
+.soundcloudBar {
+  background: #e5e5e5;
+}
+
+.youtubeBar {
+  background: white;
+}
+
+.twitchBar {
+  background: white;
+}
+
+.allBar:before, .allBar:after {
+  background: white;
+}
+
+.spotifyBar:before, .spotifyBar:after {
+  background: white;
+}
+
+.soundcloudBar:before, .soundcloudBar:after {
+  background: #e5e5e5;
+}
+
+.youtubeBar:before, .youtubeBar:after {
+  background: white;
+}
+
+.twitchBar:before, .twitchBar:after {
+  background: white;
+}
+
+#bar:before, #bar:after {
   content:'';
   height:2px;
   width:0;
   bottom:1px;
   position:absolute;
-  background: white;
   transition:0.2s ease all;
 }
 
-.bar:before{
+#bar:before {
   left:50%;
 }
 
-.bar:after{
+#bar:after {
   right:50%;
 }
 
-#query:focus ~ .bar:before, #query:focus ~ .bar:after{
+#query:focus ~ #bar:before, #query:focus ~ #bar:after {
   width:50%;
 }
 
-#leftWrapper{
-  background-color: #282828;
+#leftWrapper {
   height: 100%;
   position: absolute;
   left: 0;
   top: 0;
   width: 100px;
-  z-index: 1;
 }
 
-#sourceSelectorWrapper{
+.allLeft {
+  background-color: #282224;
+}
+
+.spotifyLeft {
+  background-color: #282828;
+}
+
+.soundcloudLeft {
+  background-color: rgb(51, 51, 51);
+}
+
+.youtubeLeft {
+  background-color: #f7f7f7;
+}
+
+.twitchLeft {
+  background-color: #19191f;
+}
+
+#sourceSelectorWrapper {
   list-style-type: none;
   width: 100%;
   padding: 0;
 }
 
-.sourceList{
+.sourceList {
   width:100%;
 }
 
-.sourceSelector{
+.sourceSelector {
   background-color: transparent;
   border-color: transparent;
   width: 100%;
   font-size: 70px;
   margin-top: 50px;
+  transition: 0.5s ease;
 }
 
 .sourceSelector:hover {
-  background-color: #525252;
   cursor:pointer;
+  font-size: 100px;
+  transition: 0.3s ease;
 }
 
-#allSelector{
+#allSelector {
   color: #8DEEEE;
 }
 
-#spotifySelector{
-  color: green;
+#spotifySelector {
+  color: #23CF5F;
 }
 
-#soundcloudSelector{
+#soundcloudSelector {
   font-size: 50px;
   color: #FF6600;
 }
 
-#youtubeSelector{
+#soundcloudSelector:hover {
+  font-size: 70px;
+  transition: 0.3s ease;
+}
+
+#youtubeSelector {
   color: #e52d27;
 }
 
-#rightWrapper{
-  margin-left: 100px;
-  height: 80%;
+#twitchSelector {
+  color: #6441a5;
 }
 
-#spotifyResults{
+#twitchSelector:hover {
+  font-size: 90px;
+  transition: 0.3s ease;
+}
+
+#githubSelector {
+  color: #a29baa;
+}
+
+#rightWrapper {
+  margin-left: 100px;
+  height: calc(100% - 135px);
+}
+
+#results {
   height: 100%;
   overflow: auto;
+  width: 70%;
+  float: right;
+  margin-right: 0px;
+}
+
+.allScroll::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+.allScroll::-webkit-scrollbar {
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+.allScroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+	background-color: #000000;
+}
+
+.spotifyScroll::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+.spotifyScroll::-webkit-scrollbar {
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+.spotifyScroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+	background-color: #23CF5F;
+}
+
+.soundcloudScroll::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+.soundcloudScroll::-webkit-scrollbar {
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+.soundcloudScroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+	background-color: #FF6600;
+}
+
+.youtubeScroll::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+.youtubeScroll::-webkit-scrollbar {
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+.youtubeScroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+	background-color: #e52d27;
+}
+
+.twitchScroll::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+.twitchScroll::-webkit-scrollbar {
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+.twitchScroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+	background-color: #6441a5;
+}
+
+.selectedAllRow {
+  color: #000000;
+  background-color: #cecece;
 }
 
 .selectedSpotifyRow {
-  color: #81b71a;
-  background-color: #efefef;
+  color: #23CF5F;
+  background-color: #323232;
 }
 
-#frameWrapper{
-  z-index: 2;
-  width: 99%;
+.selectedSoundcloudRow {
+  color: #FF6600;
+  background-color: #cecece;
+}
+
+.selectedYoutubeRow {
+  color: rgb(197, 17, 9);
+  background-color: #cecece;
+}
+
+#frameWrapper {
+  width: calc(100% - 100px);
   position: absolute;
   bottom: 0;
+  margin-left: 100px;
 }
 
-#spotifyFrame{
-  width: 100%;
+#spotifyFrame, #soundcloudFrame, #youtubeFrame {
+  float: left;
+  width: 33.3%
 }
-
 
 table {
+  box-sizing: border-box;
   margin-top: 20px;
   border-collapse: collapse;
-  width: 80%;
   font-size: 18px;
+  max-height: 100%;
+  table-layout: fixed;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.spotifyTable {
+  color: #efefef;
+}
+
+.soundcloudTable {
+  color: black;
+}
+
+.youtubeTable {
+  color: black;
 }
 
 th {
@@ -169,21 +564,233 @@ th {
 }
 
 tr {
+  display: table-row;
   border: solid;
   border-width: 1px 0;
+  height: 45px;
 }
 
 tr:first-child {
   border-top: none;
 }
 
-td {
-  width: 30%;
-  overflow: hidden;
-  height: 45px;
-  padding-right: 10px;
+.name {
+  width: 55%;
+  max-width: 55%;
 }
 
-.duration{
+.artist {
+  text-align: left;
+  margin-right: 0;
+  padding-left: 2%;
+  max-width: 30%;
+  width: 30%;
+}
+
+.duration {
+  max-width: 10%;
+}
+
+td {
+  overflow: hidden;
+  height: 45px;
+  max-height: 45px;
+  white-space: nowrap;
+  box-sizing: border-box;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+td:hover {
+  cursor:pointer;
+}
+
+.duration {
   text-align: right;
+}
+
+#resultsLeft {
+  width: 30%;
+  height: 100%;
+  float: left;
+  overflow: auto;
+}
+
+#twitchView {
+  margin-top: 22%;
+  width: 100%;
+  height: 45%;
+}
+
+#streamWrapper{
+  height: 100%;
+  width: 100%;
+}
+
+#changeWrapper {
+  margin-left: 15%;
+  margin-top: 70px;
+}
+
+#streamTitle {
+  text-align: left;
+  font-weight: 900;
+  font-size: 32px;
+  height: 90px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-transform: translateZ(0);
+  margin-top: -50px;
+}
+
+@media screen and (min-width: 1360px) {
+  #streamTitle {
+    margin-bottom: 0;
+    -webkit-transform: translateZ(0);
+    -webkit-font-smoothing: antialiased;
+    margin-top: 0;
+  }
+
+  #twitchView {
+    margin-top: 10px;
+    width: 100%;
+    height: 75%;
+  }
+
+  #changeWrapper {
+    margin-top: 45px;
+    margin-left: 25%;
+  }
+
+  object {
+    margin-top: 1px;
+    margin-bottom: 1px;
+  }
+
+  #chatButton {
+    margin-left: 250px;
+  }
+}
+
+#twitchResults {
+  background-color: rgb(242, 242, 242);
+  width: 100%;
+  height: 100%;
+  -webkit-transform: translateZ(0);
+}
+
+#twitchResults h3 {
+  margin: 0;
+  text-align: center;
+  padding-top: 10px;
+}
+
+#twitchResults ul {
+  margin: 0;
+  list-style-type: none;
+  padding: 0;
+  margin-left: 5%;
+}
+
+#twitchResults ul li {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #D0D0D0;
+  width: 90%;
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+
+.liInner {
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+}
+
+#twitchResults ul li:hover {
+  cursor: pointer;
+  color: #6441a5;
+  font-weight: 900;
+}
+
+#twitchResults ul li:first-child {
+  border-top: 1px solid #D0D0D0;
+}
+
+#twitchChat {
+  height: 100%;
+  width: 100%;
+}
+
+.tooltip {
+  background: #1496bb;
+  bottom: 100%;
+  color: #fff;
+  display: none;
+}
+
+#streamTitle:hover {
+  white-space: normal;
+  overflow: auto;
+}
+
+.playlist {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  white-space: nowrap;;
+  text-overflow: ellipsis;
+}
+
+.playlist h3 {
+  margin-left: 5%;
+}
+
+#spotifyPlaylist {
+  color: white;
+}
+
+#spotifyPlaylist h3 {
+  color: white;
+}
+
+#spotifyPlaylist a {
+  color: #23CF5F;
+}
+
+.playlist ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  color: white;
+  width: 100%;
+  height: 100%;
+}
+
+.playlist ul li:first-child {
+  border-top: 1px solid #D0D0D0;
+}
+
+.playlist ul li {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #D0D0D0;
+  width: 90%;
+  display: block;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;;
+  text-overflow: ellipsis;
+  margin-left: 5%;
+}
+
+.custom-menu {
+    z-index:1000;
+    position: absolute;
+    background-color:#C0C0C0;
+    border: 1px solid black;
+    padding: 2px;
 }

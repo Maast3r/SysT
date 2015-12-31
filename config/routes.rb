@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  get '/', to: "main#index", as: :main_index
-  post '/', to: "main#spotify_login", as: :spotify_login
+  root 'main#index'
+  # get '/', to: "main#index", as: :main_index
+  get '/auth/spotify/callback', to: 'main#index', as: :main_index
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
