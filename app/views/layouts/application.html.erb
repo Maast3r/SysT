@@ -12,9 +12,6 @@
     <%= csrf_meta_tags %>
   </head>
   <body class="allBody">
-    <%= javascript_tag "var soundcloudID = #{@soundcloud_id.to_json}" %>
-    <%= javascript_tag "var youtubeKey = #{@youtube_key.to_json}" %>
-    <%= javascript_tag "var twitchID = #{@twitch_id.to_json}" %>
     <%= yield %>
   </body>
 </html>

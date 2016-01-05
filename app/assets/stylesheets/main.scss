@@ -412,7 +412,7 @@ html, body {
 
 #rightWrapper {
   margin-left: 100px;
-  height: calc(100% - 135px);
+  height: calc(100% - 140px);
 }
 
 #results {
@@ -788,9 +788,37 @@ td:hover {
 }
 
 .custom-menu {
-    z-index:1000;
+    list-style-type: none;
+    z-index: 1000;
     position: absolute;
-    background-color:#C0C0C0;
+    background-color: #323232;
     border: 1px solid black;
     padding: 2px;
+}
+
+.context-menu-items {
+  list-style-type: none;
+  margin: 0;
+  margin-left: -40px;
+}
+
+.context-menu-link, .context-menu-link:hover, .context-menu-link:visited {
+  color: white;
+  text-decoration: none;
+}
+
+#contextMenu-playlists {
+  z-index: 1001;
+  max-height: 400px;
+  overflow: auto;
+  cursor: pointer;
+}
+
+.addSongToPlaylist {
+  color: white;
+}
+
+.addSongToPlaylist:hover{
+  background-color: #323232;
+  color: #23CF5F;
 }

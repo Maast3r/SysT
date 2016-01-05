@@ -1,4 +1,6 @@
 $(document).ready(function(){
+  var selectedSong;
+
   $("#allSelector").click(function(){
     changeColors("allBody", "allNav", "allInput", "allLabel", "allBar", "allLeft", "allScroll");
     swapResultsFrame("all");
@@ -84,6 +86,7 @@ $(document).ready(function(){
       var left = document.getElementById(focus + "Playlist");
       if(gon.spotifyPlaylists) {
         createPlaylistResults(left);
+        createPlaylistHover();
       } else {
         left.innerHTML = "<h3>Not Logged in. <br /><a href='/auth/spotify'>Sign into Spotify</a></h3>";
         focusLeftFrame(focus);
@@ -127,6 +130,20 @@ $(document).ready(function(){
     left.appendChild(playlistUl);
   }
 
+  function createPlaylistHover(){
+    $("<div id='contextMenu-playlists' class='custom-menu spotifyScroll'><ul id='rightClickPlaylists' class='context-menu-items'></ul></div>")
+        .appendTo("body")
+        .css({display: "none"});
+    var playlists = gon.spotifyPlaylists;
+    for(var i=0; i<playlists.length; i++){
+      var li = document.createElement("li");
+      li.id = playlists[i].id;
+      li.className = "addSongToPlaylist hoverable";
+      li.innerHTML = playlists[i].name;
+      document.getElementById("rightClickPlaylists").appendChild(li);
+    }
+  }
+
   function resetPlaylistClick(playlist){
     var lis = playlist.getElementsByTagName("li");
     for(var i=0; i<lis.length; i++){
@@ -167,6 +184,46 @@ $(document).ready(function(){
   	});
   }
 
+  function clearContextMenu(){
+    if(document.getElementById("contextMenu")){
+      var menu = document.getElementById("contextMenu");
+      menu.parentNode.removeChild(menu);
+      clearHoverPlaylist();
+    }
+  }
+
+  function showHoverMenu(y, x, song){
+    var hoverMenu = document.getElementById("contextMenu-playlists");
+    hoverMenu.style.display = "block";
+    hoverMenu.style.left = x + 155 + "px";
+    hoverMenu.style.top = y + "px";
+  }
+
+  function clearHoverPlaylist(){
+    var hoverMenu = document.getElementById("contextMenu-playlists");
+    hoverMenu.style.display = "none";
+  }
+
+  function addToPlaylist(song, playlist){
+    console.log(song);
+    console.log(playlist);
+    $.ajax({
+  		url: 'https://api.spotify.com/v1/users/' + gon.spotifyUserID + '/playlists/' + playlist + '/tracks?uris=' + song,
+  		type: 'POST',
+  		dataType: 'json',
+  		data:{
+  		},
+      headers: {
+          Authorization: "Bearer " + gon.auth.credentials.token
+      },
+  		success: function(resp){
+  		},
+  		error: function(XMLHttpRequest, textStatus, errorThrown){
+  			alert("Could add song to playlist. " + errorThrown);
+  		}
+  	});
+  }
+
   $(document).on('click', ".clickablePlaylist", function(event){
     clearTable(document.getElementsByClassName("spotifyTable")[0]);
     spotifyPlaylistSongs = [];
@@ -175,11 +232,23 @@ $(document).ready(function(){
     getPlaylistSongs(event.target.id, 0);
   });
 
+  document.addEventListener("click", function(e) {
+    clearContextMenu();
+  });
+
+  //http://www.sitepoint.com/building-custom-right-click-context-menu-javascript/
   $(document).bind("contextmenu", function(event) {
-    event.preventDefault();
-    // $("<div class='custom-menu'>Custom menu</div>")
-    //     .appendTo("body")
-    //     .css({top: event.pageY + "px", left: event.pageX + "px"});
+    clearContextMenu();
+    if(event.target.parentNode.className.split(" ")[3] == "spotify"){
+      event.preventDefault();
+      event.target.click();
+      $("<div id='contextMenu' class='custom-menu'><ul class='context-menu-items'><li id='addTo' class='context-menu-item'><a href='#' class='context-menu-link'>Add Song to Playlist    <i class='fa fa-angle-right'></i></a></li></ul></div>")
+          .appendTo("body")
+          .css({top: event.pageY + "px", left: event.pageX + "px"});
+      $("#addTo").hover(function(){
+        showHoverMenu(event.pageY, event.pageX);
+      });
+    }
   });
 
   $(document).on('dblclick', ".clickableRow", function(event) {
@@ -194,6 +263,7 @@ $(document).ready(function(){
   });
 
   $(document).on('click', ".clickableRow", function(event) {
+    selectedSong = event.target.parentNode.className.split(" ")[1];
     if(event.target.tagName === "TD"){
       resetTable(event.target.parentNode.parentNode);
       var row = event.target.parentNode;
@@ -207,6 +277,10 @@ $(document).ready(function(){
         row.className = row.className + " selectedYoutubeRow";
       }
     }
+  });
+
+  $(document).on('click', ".addSongToPlaylist", function(event) {
+    addToPlaylist(selectedSong, event.target.id);
   });
 
   var spotifyResult, soundcloudResult, youtubeResult;
@@ -246,7 +320,7 @@ $(document).ready(function(){
   }
 
   SC.initialize({
-    client_id: soundcloudID
+    client_id: gon.sci
   });
 
   function searchSoundcloud(query, all, callback){
@@ -267,7 +341,7 @@ $(document).ready(function(){
   function searchYoutube(query, all, callback){
   	query = query.replace(" ", "+");
   	$.ajax({
-  		url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=' + query + '&key=' + youtubeKey + '&maxResults=25&type=video',
+  		url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=' + query + '&key=' + gon.y + '&maxResults=25&type=video',
   		type: 'GET',
   		dataType: 'json',
   		data:{
@@ -412,7 +486,7 @@ $(document).ready(function(){
     }
   }
 
-  Twitch.init({clientId: twitchID}, function(error, status){
+  Twitch.init({clientId: gon.ti}, function(error, status){
     if (status.authenticated){
       $('#twitchSelector').click(function() {
         changeColors("twitchBody", "twitchNav", "twitchInput", "twitchLabel", "twitchBar", "twitchLeft", "twitchScroll");
