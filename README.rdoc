@@ -1,6 +1,6 @@
 == README
 
-Demo at https://syst.herokuapp.com
+Demo at http://syst.herokuapp.com
 
 Things you may want to cover:
 
