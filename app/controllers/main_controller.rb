@@ -27,5 +27,5 @@ class MainController < ApplicationController
     gon.u = spotify_user
     session[:spotifyHash] = auth_hash
   end
-
+ 
 end
